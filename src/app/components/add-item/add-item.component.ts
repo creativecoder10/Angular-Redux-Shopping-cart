@@ -1,18 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { CartActions } from '../redux/cart.model.action';
+import { CartActions } from '../../redux/cart.model.action';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class AddItemComponent implements OnInit, OnChanges {
 
   @Input() shoppingItemsData;
+  @Input() selectedItem;
+  @Output() alert: EventEmitter<any> = new EventEmitter();
 
   shoppingForm: FormGroup;
   price: number;
+  updateItem = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,11 +26,19 @@ export class AddItemComponent implements OnInit {
     this.buildForm();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.selectedItem) {
+      this.buildForm();
+      this.changeItem();
+      this.updateItem = true;
+    }
+  }
+
   buildForm = () => {
     this.shoppingForm = new FormGroup({
-      item: new FormControl(null),
-      quantity: new FormControl(null),
-      price: new FormControl(0)
+      item: new FormControl(this.selectedItem.item, [Validators.required]),
+      quantity: new FormControl(this.selectedItem.quantity, [Validators.required]),
+      price: new FormControl(this.selectedItem.price)
     });
   }
 
@@ -50,6 +61,19 @@ export class AddItemComponent implements OnInit {
       price: this.price
     });
     this.cancel();
+    this.alert.emit('add');
+  }
+
+  updateCart(): void {
+    this.cartActions.editData({
+      id: this.selectedItem.id,
+      item: this.shoppingForm.controls.item.value,
+      quantity: this.shoppingForm.controls.quantity.value,
+      price: this.price
+    });
+    this.cancel();
+    this.updateItem = false;
+    this.alert.emit('update');
   }
 
 }

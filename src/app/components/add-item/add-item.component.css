@@ -1,0 +1,16 @@
+button {
+    min-width: 120px;
+    margin-top: 40px;
+}
+
+.btn-primary {
+    float: left;
+}
+
+.btn-secondary {
+    float: right;
+}
+
+label {
+    padding-top: 20px;
+}

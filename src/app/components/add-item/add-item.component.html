@@ -13,7 +13,8 @@
     <input id="price" class="form-control" formControlName="price" disabled *ngIf="price > 0">
     <input id="price" class="form-control" value="Please select item and quantity" disabled *ngIf="!price">
 
-    <button type="button" class="btn btn-primary" (click)="addToCart()">Add</button>
+    <button type="button" class="btn btn-primary" (click)="addToCart()" [disabled]="!shoppingForm.valid" *ngIf="!updateItem">Add</button>
+     <button type="button" class="btn btn-primary" (click)="updateCart()" [disabled]="!shoppingForm.valid" *ngIf="updateItem">Update</button>
     <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
   </form>
 </div>

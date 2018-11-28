@@ -1,0 +1,23 @@
+
+<p *ngIf="(shoppingCartData | async).length > 0" class="tip">** Click on the item name to edit/ update the entry.</p>
+<table class="table" *ngIf="(shoppingCartData | async).length > 0">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Qty.</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of (shoppingCartData | async); let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td (click)="editItem(item)" class="item-name">{{item.item}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.price | currency:'$'}} <span class="delete-icon" (click)="deleteItem(item)">X</span></td>
+    </tr>
+   
+  </tbody>
+</table>
+<p *ngIf="(shoppingCartData | async).length === 0">Your shopping cart is empty</p>
+<p *ngIf="(shoppingCartData | async).length > 0" class="total">Total price: {{getTolal(shoppingCartData | async) | currency:'$'}}</p>

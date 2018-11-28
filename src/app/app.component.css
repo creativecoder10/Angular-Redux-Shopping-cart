@@ -1,0 +1,11 @@
+.container {
+    padding: 50px 0;
+
+    
+}
+
+@media(max-width: 568px) {
+    .card, .alert {
+        margin: 15px 0 15px 15px;
+    }
+}

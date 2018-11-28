@@ -1,19 +1,27 @@
 <div class="container">
+
+  <div class="alert alert-success" role="alert" *ngIf="alert">
+    {{alert}}
+  </div>
+
   <div class="row">
+
+    <!--panel to add/edit the items-->
     <div class="col-md-4">
       <div class="card">
+        <div class="card-header">Add Item</div>
         <div class="card-body">
-          <h5 class="card-title">Add Item</h5>
-          <app-add-item [shoppingItemsData]="shoppingItemsData"></app-add-item>
+          <app-add-item [shoppingItemsData]="shoppingItemsData" [selectedItem]="selectedItem" (alert)="setAlert($event)"></app-add-item>
         </div>
       </div>
     </div>
 
+    <!--panel to display the cart-->
     <div class="col-md-8">
       <div class="card">
+        <div class="card-header">Shopping cart</div>
         <div class="card-body">
-          <h5 class="card-title">Shopping cart</h5>
-          <app-shopping-cart></app-shopping-cart>
+          <app-shopping-cart [shoppingCartData]="shoppingCartData" (editData)="editData($event)"></app-shopping-cart>
         </div>
       </div>
     </div>

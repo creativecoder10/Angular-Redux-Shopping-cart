@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AddItemComponent } from './add-item/add-item.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { rootReducer } from './redux/root.reducer';
 import { CartActions } from './redux/cart.model.action';
 
