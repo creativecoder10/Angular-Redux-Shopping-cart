@@ -1,0 +1,39 @@
+{
+    "items": [
+        {
+            "name": "Bread",
+            "typeCode": 1,
+            "price": 2
+        },
+        {
+            "name": "Apple",
+            "typeCode": 2,
+            "price": 4
+        },
+        {
+            "name": "Banana",
+            "typeCode": 2,
+            "price": 2
+        },
+        {
+            "name": "Tissues",
+            "typeCode": 1,
+            "price": 7
+        },
+        {
+            "name": "Lettuce",
+            "typeCode": 2,
+            "price": 7
+        },
+        {
+            "name": "Tomato",
+            "typeCode": 2,
+            "price": 5
+        },
+        {
+            "name": "Milk",
+            "typeCode": 1,
+            "price": 3
+        }
+    ]
+}

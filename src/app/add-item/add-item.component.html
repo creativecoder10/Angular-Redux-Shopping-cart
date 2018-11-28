@@ -1,0 +1,19 @@
+<div class="form-group">
+  <form [formGroup]="shoppingForm">
+    <label for="item">Item name</label>
+    <select id="item" formControlName="item" class="form-control" (change)="changeItem()">
+        <option *ngFor="let item of shoppingItemsData" [ngValue]="item.name">{{ item.name }}</option>
+    </select>
+
+    <label for="quantity">Quantity</label>
+    <input id="quantity" type="number" (change)="changeItem()" class="form-control" formControlName="quantity" min="1" max="100"
+      step="1" value="1">
+
+    <label for="price">Price</label>
+    <input id="price" class="form-control" formControlName="price" disabled *ngIf="price > 0">
+    <input id="price" class="form-control" value="Please select item and quantity" disabled *ngIf="!price">
+
+    <button type="button" class="btn btn-primary" (click)="addToCart()">Add</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+  </form>
+</div>
