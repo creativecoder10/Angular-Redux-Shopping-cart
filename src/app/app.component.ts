@@ -15,9 +15,7 @@ export class AppComponent implements OnInit {
   @select(['cartItemReducer', 'data']) shoppingCartData: Observable<any>;
 
   public shoppingItemsData;
-  public selectedItem = {
-    id: null, item: null, quantity: null, price: null
-  };
+  public selectedItem = { id: null, item: null, quantity: null, price: null };
   public alert: string;
 
   constructor(private httpService: HttpService) { }
@@ -27,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   getItemList(): void {
-    this.httpService.getBusServiceDetails()
+    this.httpService.getItemDetails()
       .subscribe((data: any) => {
         this.shoppingItemsData = data.items;
       }, () => {

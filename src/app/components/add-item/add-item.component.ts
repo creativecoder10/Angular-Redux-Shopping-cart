@@ -34,7 +34,7 @@ export class AddItemComponent implements OnInit, OnChanges {
     }
   }
 
-  buildForm = () => {
+  buildForm(): void {
     this.shoppingForm = new FormGroup({
       item: new FormControl(this.selectedItem.item, [Validators.required]),
       quantity: new FormControl(this.selectedItem.quantity, [Validators.required]),

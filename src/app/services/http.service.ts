@@ -6,7 +6,7 @@ export class HttpService {
 
     constructor(private http: HttpClient) { }
 
-    getBusServiceDetails() {
+    getItemDetails() {
         return this.http.get('../../../assets/shopping-items.json');
     }
 }

@@ -9,7 +9,7 @@ import { CartActions } from '../../redux/cart.model.action';
 })
 export class ShoppingCartComponent {
 
-  @Input() shoppingCartData: Observable<any>;
+  @Input() shoppingCartData;
   @Output() editData: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -26,7 +26,7 @@ export class ShoppingCartComponent {
     return items.map((item) => item.price).reduce((a, b) => a + b, 0);
   }
 
-  editItem(item) {
+  editItem(item): void {
     this.editData.emit(item);
   }
 

@@ -3,7 +3,7 @@ import { dispatch } from '@angular-redux/store';
 import { ICart } from './cart.model';
 
 type Payload = ICart[];
-
+/* istanbul ignore next */
 @Injectable()
 export class CartActions {
     static readonly ADD_TO_CART = 'ADD_TO_CART';
